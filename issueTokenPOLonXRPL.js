@@ -4,7 +4,7 @@ const seed1 = "sate7QZLwBtXXXXXXXXXX3VgKNJKi"; // (clau privada del receptor ini
 // cold address: rnSWeJnqzXGK26sgPYFm1fKRznYNuw8EJd (clau/adreça pública de l'issuer dels POL)
 const seed2 = "seuuEA8AvATbNYYYYYYYYYYcE95Ym"; // (clau privada de l'issuer dels POL, s'ha modificat per ocultar la clau real)
 
-// Connect ---------------------------------------------------------------------
+// Connecta amb la blockchain XRPL ---------------------------------------------------------------------
 async function main() {
   const client = new xrpl.Client("wss://xrplcluster.com");
   console.log("Connecting to Testnet...");
@@ -16,7 +16,7 @@ async function main() {
     `Got hot address ${hot_wallet.address} and cold address ${cold_wallet.address}.`
   );
 
-  // Configure issuer (cold address) settings ----------------------------------
+  // Configura la configuració del compte emissor dels POL (cold address)----------------------------------
   const cold_settings_tx = {
     TransactionType: "AccountSet",
     Account: cold_wallet.address,
@@ -35,7 +35,7 @@ async function main() {
     throw `Error sending transaction: ${cst_result}`;
   }
 
-  // Create trust line from hot to cold address --------------------------------
+  // Crea una trustline des del compte que rebrà els POL i el comtpe encunyador/issuer dels POL --------------------------------
   const currency_code = "POL";
   const trust_set_tx = {
     TransactionType: "TrustSet",
@@ -59,7 +59,7 @@ async function main() {
     throw `Error sending transaction: ${ts_result.result.meta.TransactionResult}`;
   }
 
-  // Send token ----------------------------------------------------------------
+  // Envia/crea/encuncya el token POL ----------------------------------------------------------------
   let issue_quantity = "99000000";
 
   const send_token_tx = {
@@ -88,7 +88,7 @@ async function main() {
     throw `Error sending transaction: ${pay_result.result.meta.TransactionResult}`;
   }
 
-  // Check balances ------------------------------------------------------------
+  // Comprova la informació dels comptes a la blockchain XRPL ------------------------------------------------------------
   console.log("Getting hot address balances...");
   const hot_balances = await client.request({
     command: "account_lines",
