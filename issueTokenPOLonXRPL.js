@@ -1,8 +1,8 @@
 const xrpl = require("xrpl");
 // hot address: rnx3tUMGWDrazjVgZwDRdHWi4BzbqnVzWx (clau/adreça pública del receptor inicial dels POL)
-const seed1 = "sate7QZLwBtXXXXXXXXXX3VgKNJKi"; // (clau privada del receptor inicial dels POL)
+const seed1 = "sate7QZLwBtXXXXXXXXXX3VgKNJKi"; // (clau privada del receptor inicial dels POL, s'ha modificat per ocultar la clau real)
 // cold address: rnSWeJnqzXGK26sgPYFm1fKRznYNuw8EJd (clau/adreça pública de l'issuer dels POL)
-const seed2 = "seuuEA8AvATbNYYYYYYYYYYcE95Ym"; // (clau privada de l'issuer dels POL)
+const seed2 = "seuuEA8AvATbNYYYYYYYYYYcE95Ym"; // (clau privada de l'issuer dels POL, s'ha modificat per ocultar la clau real)
 
 // Connect ---------------------------------------------------------------------
 async function main() {
